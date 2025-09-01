@@ -1,11 +1,15 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
 
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+@font-face {
+  font-family: "Real Earth";
+  src: url("/fonts/EarthNormal.woff2") format("woff2"),
+       url("/fonts/EarthNormal.woff") format("woff"),
+       url("/fonts/EarthNormal.ttf") format("truetype"); /* opcional */
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -1681,5 +1685,50 @@ input, select, textarea {
 @media screen and (max-width: 736px) {
   #header .logo img {
     object-fit: contain;
+  }
+}
+/* ==== Logo circular cross-browser (incl. Safari) ==== */
+#header .logo {
+  /* dimensiones y círculo del template */
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  border: solid 1px #ffffff;
+
+  /* centrado robusto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* recorte dentro del círculo */
+  overflow: hidden;
+
+  /* evita que Safari aplique zoom raro en imágenes */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+#header .logo img {
+  /* que la imagen nunca se deforme */
+  max-width: 90%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+
+  /* centrado extra por si se pierde flex */
+  display: block;
+  margin: auto;
+
+  /* apariencia limpia dentro del círculo */
+  border-radius: 50%;
+
+  /* intenta respetar proporciones (algunos Safari viejos lo ignoran) */
+  object-fit: contain;
+}
+
+/* Tamaños móviles del template */
+@media screen and (max-width: 736px) {
+  #header .logo {
+    width: 4.75rem;
+    height: 4.75rem;
   }
 }
