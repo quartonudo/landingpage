@@ -204,7 +204,7 @@ input, select, textarea {
 
 	h1 {
 		font-family: 'EarthNormal';
-        src: url('../fonts/EarthNormal.ttf') format('truetype');
+        src: url("/fonts/EarthNormal.woff2") format("woff2"),
 		url("/fonts/EarthNormal.woff") format("woff"),
 		url("/fonts/EarthNormal.ttf") format("truetype"); /* opcional */
 		font-size: 2.25rem;
