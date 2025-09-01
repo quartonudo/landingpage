@@ -175,7 +175,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #ffffff;
+		color: #fa5422;
 		font-weight: 600;
 		line-height: 1.5;
 		margin: 0 0 1rem 0;
@@ -199,6 +199,8 @@ input, select, textarea {
 		}
 
 	h1 {
+		font-family: 'EarthNormal';
+        src: url('../fonts/EarthNormal.ttf') format('truetype');
 		font-size: 2.25rem;
 		line-height: 1.3;
 		letter-spacing: 0.5rem;
@@ -1140,9 +1142,12 @@ input, select, textarea {
 			-ms-transition-delay: 0.75s;
 			transition-delay: 0.75s;
 			background-image: linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)), url("../../images/overlay.png");
-			background-size: auto, 256px 256px;
-			background-position: center, center;
-			background-repeat: no-repeat, repeat;
+			background-size: auto,
+ 256px 256px;
+			background-position: center,
+ center;
+			background-repeat: no-repeat,
+ repeat;
 			z-index: 2;
 		}
 
@@ -1656,3 +1661,25 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+		/* ==== Logo circular con imagen propia ==== */
+#header .logo {
+  /* ya tiene tamaño y borde del template */
+  display: flex;                 /* centra la imagen */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;              /* recorta en círculo */
+}
+
+#header .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* usa 'cover' si quieres que llene todo aún si recorta */
+  border-radius: 50%;            /* asegura el círculo en la imagen también */
+}
+
+/* Opcional: en móviles mantiene proporción */
+@media screen and (max-width: 736px) {
+  #header .logo img {
+    object-fit: contain;
+  }
+}
