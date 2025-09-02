@@ -11,6 +11,15 @@
   font-display: swap;
 }
 
+.logo-text {
+  font-family: "EarthNormal", "Source Sans Pro", -apple-system, system-ui, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.5rem;         /* ajustá al tamaño que quieras */
+  letter-spacing: 0.2rem;  /* opcional */
+  color: #ffffff;          /* asegurás que se vea en blanco en el footer */
+  text-transform: uppercase; /* opcional */
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
