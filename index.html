@@ -47,9 +47,9 @@
 							<article id="intro">
 								<h2 class="major">Intro</h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>"Quarto nudo" nació como un proyecto (sinthome) durante mi etapa en la Universidad de Psicología con el objetivo de anclar mi nudo borromeo, siguiendo su versión de la escuela francesa Lacaniana. </p>
-								<p>Fue primero una canción de prosa psicoanalítica, pero luego fue rápidamente mutando e incluso supo ser el nombre mi banda de música hace años atrás.</p>
-								<p>Actualmente es un desafío personal de recopilación y re-grabación (casera con ayuda de la tecnologia actual) de mas de 40 "demos" para compartirlos al público, sin importar que no sean las versiones profesionales finales (que tal vez nunca lleguen).</p>
+								<p>"Quarto nudo" nació como un proyecto (sinthome) durante mi etapa Universitaria en la UK de Psicología, tal vez como instrumento de anclaje de mi nudo borromeo (tomando su versión de la escuela francesa Lacaniana). </p>
+								<p>Así, fue primero una canción de prosa psicoanalítica, pero luego rápidamente fue mutando e incluso supo ser el nombre mi banda de música, años atrás.</p>
+								<p>Actualmente es un proyecto musical personal desde donde encaro el desafío de recopilación y re-grabación (casera con ayuda de la tecnologia) de mas de 40 "demos" para compartirlos al público, sin importar que disten de las versiones profesionales finales (que tal vez nunca lleguen).</p>
 								<p>Bajo la premisa entonces, de que "lo perfecto es enemigo de lo bueno" y de que no hay mejor momento que hoy (y pensándolo bien, tal vez en realidad no existe otro momento que ese en lo absoluto)... poco a poco irán viendo la luz una salección de mis demos que irán conformando la recopilación llamada, en un rapto de escasez total de creatividad, simplemente: <a href="#Demomios">"Demomios"</a>.</p>
 							</article>
 
@@ -63,10 +63,49 @@
 
 						<!-- Videos -->
 							<article id="Videos">
-								<h2 class="major">Videos</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Independientemente de los videos del canal de youtube: <a href="https://www.youtube.com/@Quartonudomusic"> Quartonudomusic</a>, también hay diversos videos compartiendo contenido en relación a quarto nudo. Principal mente en <a href="https://www.instagram.com/quartonudomusic?igsh=MXZjYmt4YXIzOXBh"> Instagram</a> </p>
+							<h2 class="major">Videos</h2>
+
+							<!-- Grilla de carátulas -->
+							<ul class="grid-videos">
+								<!-- ITEM 1 -->
+								<li>
+								<a class="card-video" href="https://www.youtube.com/watch?v=4tWjA2zL9YM" target="_blank" rel="noopener">
+									<!-- Puedes usar tu propia carátula... -->
+									<img src="images/covers/Caratula Rodrigo.png" alt="Canción 1" loading="lazy" />
+									<!-- ...o directamente el thumbnail de YouTube: 
+									<img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Canción 1" loading="lazy" />
+									-->
+									<span class="card-title card-title-ajustado">Rodrigo (No te olvido)</span>
+								</a>
+								</li>
+
+								<!-- ITEM 2 -->
+								<li>
+								<a class="card-video" href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" rel="noopener">
+									<img src="images/covers/Caratula Balada.png" alt="Canción 2" loading="lazy" />
+									<span class="card-title">Balada del solitario</span>
+								</a>
+								</li>
+
+								<!-- Duplica este bloque para más videos -->
+								<li>
+								<a class="card-video" href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" rel="noopener">
+									<img src="images/covers/Caratula Dame una cancion.png" alt="Canción 3" loading="lazy" />
+									<span class="card-title">Dame una canción</span>
+								</a>
+								</li>
+
+								<li>
+								<a class="card-video" href="https://www.youtube.com/watch?v=VIDEO_ID_4" target="_blank" rel="noopener">
+									<img src="images/covers/cancion-4.jpg" alt="Canción 4" loading="lazy" />
+									<span class="card-title">Loop</span>
+								</a>
+								</li>
+
+								<!-- ...añade todos los que quieras -->
+							</ul>
 							</article>
+
 
 						<!-- Contact -->
 							<article id="contact">
@@ -361,6 +400,37 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', () => {
+			// Limitar el ajuste SOLO a la grilla de videos
+			const grid = document.querySelector('.grid-videos');
+			if (!grid) return;
+
+			// Función que ajusta el tamaño de fuente hasta que el texto entre en 1 línea
+			const fitOne = (el) => {
+				el.style.fontSize = ''; // reset al valor del CSS (.7rem)
+				let sizePx = parseFloat(getComputedStyle(el).fontSize);
+				const minPx  = 9;     // piso de legibilidad (podés subir/bajar)
+				const stepPx = 0.3;   // ajuste fino por iteración
+
+				// Achicar hasta que no haya desborde horizontal
+				while (el.scrollWidth > el.clientWidth && sizePx > minPx) {
+				sizePx -= stepPx;
+				el.style.fontSize = sizePx + 'px';
+				}
+			};
+
+			// Ajustar todos los títulos actuales
+			grid.querySelectorAll('.card-title').forEach(fitOne);
+
+			// Recalcular si cambia el tamaño (responsive)
+			const ro = new ResizeObserver(() => {
+				grid.querySelectorAll('.card-title').forEach(fitOne);
+			});
+			ro.observe(grid);
+			});
+			</script>
 
 	</body>
 </html>
