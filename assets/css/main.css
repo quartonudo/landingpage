@@ -1743,3 +1743,66 @@ input, select, textarea {
     height: 4.75rem;
   }
 }
+/* === Grilla de Videos (tipo Multiverse) === */
+.grid-videos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.card-video {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  border-bottom: 0 !important; /* evita subrayado de <a> del template */
+}
+
+.card-video img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;      /* cuadrado */
+  object-fit: cover;
+  display: block;
+  transition: transform .25s ease;
+}
+
+.card-video:hover img {
+  transform: scale(1.04);
+}
+
+.card-title {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: block;           /* ✅ ocupa todo el ancho del renglón */
+  width: 100%;              /* ✅ necesario para medir bien el desborde */
+  white-space: nowrap;      /* ✅ 1 sola línea (nunca se parte) */
+  padding: .2rem .4rem;
+  font-size: .7rem;         /* tamaño base; el JS lo bajará si no entra */
+  line-height: 1.1;
+  letter-spacing: .05rem;
+  text-transform: none;
+  background: rgba(0,0,0,.25);
+  border-top: .5px solid rgba(255,255,255,.2);
+}
+
+/* Responsive: un poco más grandes en pantallas chicas */
+@media screen and (max-width: 736px) {
+  .grid-videos {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: .8rem;
+  }
+}
+
+/* Por si el navegador no soporta aspect-ratio (fallback) */
+@supports not (aspect-ratio: 1 / 1) {
+  .card-video { padding-top: 100%; }
+  .card-video img { 
+    position: absolute; top: 0; left: 0; 
+    width: 100%; height: 100%; object-fit: cover; 
+  }
+}
